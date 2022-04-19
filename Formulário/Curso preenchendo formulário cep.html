@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<!-- saved from url=(0085)https://www.alura.com.br/artigos/preenchendo-formulario-html-automaticamente-com-ajax -->
+<html lang="pt-BR" coupert-item="9AF8D9A4E502F3784AD24272D81F0381"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0"><title>Preenchendo formulário HTML automaticamente com AJAX | Alura Cursos Online</title><meta name="description" content="Aprenda como preencher formularios feitos em HTML automaticamente com AJAX."><link rel="amphtml" href="https://www.alura.com.br/artigos/preenchendo-formulario-html-automaticamente-com-ajax--amp"><link rel="canonical" href="https://www.alura.com.br/artigos/preenchendo-formulario-html-automaticamente-com-ajax"><link rel="icon" href="https://www.alura.com.br/assets/favicon.1636535197.ico"><link href="./Preenchendo formulário HTML automaticamente com AJAX _ Alura Cursos Online_files/css" rel="stylesheet" crossorigin=""><link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin=""><link rel="stylesheet" href="./Preenchendo formulário HTML automaticamente com AJAX _ Alura Cursos Online_files/titulos.1636535197.css"><link rel="stylesheet" href="./Preenchendo formulário HTML automaticamente com AJAX _ Alura Cursos Online_files/index.1642791756.css"><link rel="stylesheet" href="./Preenchendo formulário HTML automaticamente com AJAX _ Alura Cursos Online_files/highlight.1636535198.css"><meta property="og:locale" content="pt_BR"><meta property="og:description" content="Aprenda como preencher formularios feitos em HTML automaticamente com AJAX."><meta property="og:title" content="Preenchendo formulário HTML automaticamente com AJAX | Alura Cursos Online"><meta property="og:site_name" content="Alura"><meta property="og:url" content="https://www.alura.com.br/artigos/preenchendo-formulario-html-automaticamente-com-ajax"><meta property="og:image" content="https://www.alura.com.br/artigos/assets/uploads/2017/01/preenchendo-formulario-html-automaticamente-com-ajax.jpg"><meta property="og:image:alt" content="Alura logo"><meta property="fb:app_id" content="140078819399376"><meta property="og:type" content="website"><meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#2A7AE4"><meta name="thumbnail" content="https://www.alura.com.br/artigos/assets/uploads/2017/01/preenchendo-formulario-html-automaticamente-com-ajax.jpg"> <script type="text/javascript" async="" src="./Preenchendo formulário HTML automaticamente com AJAX _ Alura Cursos Online_files/23465.js.download"></script><script type="text/javascript" async="" src="./Preenchendo formulário HTML automaticamente com AJAX _ Alura Cursos Online_files/insight.min.js.download"></script><script type="text/javascript" async="" src="./Preenchendo formulário HTML automaticamente com AJAX _ Alura Cursos Online_files/f.txt"></script><script type="text/javascript" async="" src="./Preenchendo formulário HTML automaticamente com AJAX _ Alura Cursos Online_files/analytics.js.download"></script><script async="" src="./Preenchendo formulário HTML automaticamente com AJAX _ Alura Cursos Online_files/fbevents.js.download"></script><script async="" src="./Preenchendo formulário HTML automaticamente com AJAX _ Alura Cursos Online_files/gtm.js.download"></script><script>;(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-TN542JN');</script> <script src="./Preenchendo formulário HTML automaticamente com AJAX _ Alura Cursos Online_files/sha256.min.js.download"></script><script async="" src="./Preenchendo formulário HTML automaticamente com AJAX _ Alura Cursos Online_files/hotjar-1029027.js.download"></script><style>
+        @font-face{
+            font-family: 'Circular'; 
+            font-weight: 400;
+            src: url(chrome-extension://mfidniedemcgceagapgdekdbmanojomk/font/Circular-Pro-Black-Regular.eot);
+            src: url(chrome-extension://mfidniedemcgceagapgdekdbmanojomk/font/Circular-Pro-Black-Regular.eot?#iefix) format('embedded-opentype'),
+                url(chrome-extension://mfidniedemcgceagapgdekdbmanojomk/font/Circular-Pro-Black-Regular.woff2) format('woff2'),
+                url(chrome-extension://mfidniedemcgceagapgdekdbmanojomk/font/Circular-Pro-Black-Regular.woff) format('woff'),
+                url(chrome-extension://mfidniedemcgceagapgdekdbmanojomk/font/Circular-Pro-Black-Regular.ttf) format('truetype'),
+                url(chrome-extension://mfidniedemcgceagapgdekdbmanojomk/font/Circular-Pro-Black-Regular.svg) format('svg');
+        }
+        @font-face{
+            font-family: 'Circular'; 
+            font-weight: 700;
+            src: url(chrome-extension://mfidniedemcgceagapgdekdbmanojomk/font/Circular-Pro-Black-Bold.eot);
+            src: url(chrome-extension://mfidniedemcgceagapgdekdbmanojomk/font/Circular-Pro-Black-Bold.eot?#iefix) format('embedded-opentype'),
+                url(chrome-extension://mfidniedemcgceagapgdekdbmanojomk/font/Circular-Pro-Black-Bold.woff2) format('woff2'),
+                url(chrome-extension://mfidniedemcgceagapgdekdbmanojomk/font/Circular-Pro-Black-Bold.woff) format('woff'),
+                url(chrome-extension://mfidniedemcgceagapgdekdbmanojomk/font/Circular-Pro-Black-Bold.ttf) format('truetype'),
+                url(chrome-extension://mfidniedemcgceagapgdekdbmanojomk/font/Circular-Pro-Black-Bold.svg) format('svg');
+        }
+    </style><script src="./Preenchendo formulário HTML automaticamente com AJAX _ Alura Cursos Online_files/f(1).txt"></script><script async="" src="./Preenchendo formulário HTML automaticamente com AJAX _ Alura Cursos Online_files/modules.a389f57d0ad3cbd8094d.js.download" charset="utf-8"></script><style type="text/css">iframe#_hjRemoteVarsFrame {display: none !important; width: 1px !important; height: 1px !important; opacity: 0 !important; pointer-events: none !important;}</style></head><body class=""> <script src="./Preenchendo formulário HTML automaticamente com AJAX _ Alura Cursos Online_files/avatarOnError.1636535198.js.download"></script> <noscript><iframe
+src="https://www.googletagmanager.com/ns.html?id=GTM-TN542JN" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <script>!function(f,b,e,v,n,t,s) {if(f.fbq)return;n=f.fbq=function(){n.callMethod? n.callMethod.apply(n,arguments):n.queue.push(arguments)}; if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0'; n.queue=[];t=b.createElement(e);t.async=!0; t.src=v;s=b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t,s)}(window, document,'script', 'https://connect.facebook.net/en_US/fbevents.js'); fbq('init', '1067810189950610'); fbq('track', 'PageView');</script> <script src="./Preenchendo formulário HTML automaticamente com AJAX _ Alura Cursos Online_files/courseIconFallback.1636535198.js.download"></script>  <script type="application/ld+json">{
+      "@context": "http://schema.org",
+      "@type": "BreadcrumbList",
+
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https://www.alura.com.br",
+          "name": "Alura"
+        }
+      }   
+              ,{
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@id": "https://www.alura.com.br/artigos",
+            "name": "Artigos"
+          }
+        }
+              ,{
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@id": "https://www.alura.com.br/artigos/front-end",
+            "name": "Front-end"
+          }
+        }
+              ,{
+          "@type": "ListItem",
+          "position": 4,
+          "item": {
+            "@id": "https://www.alura.com.br/artigos/preenchendo-formulario-html-automaticamente-com-ajax",
+            "name": "Preenchendo formulário HTML automaticamente com AJAX"
+          }
+        }
+            ]
+    }</script> <link rel="stylesheet" href="./Preenchendo formulário HTML automaticamente com AJAX _ Alura Cursos Online_files/header.1638241251.css"><link rel="stylesheet" href="./Preenchendo formulário HTML automaticamente com AJAX _ Alura Cursos Online_files/dia-do-programador.1636535197.css"><link rel="stylesheet" href="./Preenchendo formulário HTML automaticamente com AJAX _ Alura Cursos Online_files/countdown.1636535197.css"><link rel="stylesheet" href="./Preenchendo formulário HTML automaticamente com AJAX _ Alura Cursos Online_files/header.1638241251.css"><header class="header"><div class="container"><nav class="header__nav">
+<a href="https://www.alura.com.br/" class="header__nav__link header__nav__link--logo">
+<img class="header__nav__link__logo" alt="Alura" src="./Preenchendo formulário HTML automaticamente com AJAX _ Alura Cursos Online_files/alura-logo-white.1636535197.svg">
+</a><div class="header__nav__wrapper header__nav__wrapper--ctas"><div class="header-utilitario-busca" aria-label="Busca">
+<svg class="header-utilitario-busca-icone--home" xmlns:xlink="http://www.w3.org/1999/xlink">
+<use xlink:href="/svg,1636535197/header#icon-header-busca-home"></use>
+</svg></div>
+<a href="https://cursos.alura.com.br/loginForm?urlAfterLogin=https://cursos.alura.com.br/dashboard" class="header__nav__link header__nav__link--entrar">Entrar</a>
+<a href="https://www.alura.com.br/planos-cursos-online" class="header__nav__link header__nav__link--cta">Matricule-se</a></div><div class="header-barraBusca__wrapper"><div class="header-barraBusca"><div class="container"><form action="https://www.alura.com.br/busca" class="header-barraBusca-form">
+<label for="header-barraBusca-form-campoBusca">Qual curso procura?</label>
+<input type="search" id="header-barraBusca-form-campoBusca" name="query" class="header-barraBusca-form-serch-input" placeholder="O que você quer aprender?">
+<button class="header-barraBusca-form-submit" type="submit"></button></form></div></div></div><div class="nav__courses__wrapper header__nav__wrapper header__nav__wrapper--menu"><div class="nav__courses__link header-navegacao-cursos">
+<svg class="header-navegacao-cursos-icone" xmlns:xlink="http://www.w3.org/1999/xlink">
+<use xlink:href="/svg,1605191409/header#icon-header-icon-arrow"></use>
+</svg>
+<span>Todos os</span>
+<span>Cursos</span></div>
+<a href="https://www.alura.com.br/formacoes" class="nav__courses__link">
+<span>Nossas</span>
+<span>Formações</span>
+</a>
+<a href="https://www.alura.com.br/empresas" class="nav__courses__link">
+<span>Para</span>
+<span>Empresas</span>
+</a>
+<a href="https://www.alura.com.br/dev-em-t" class="nav__courses__link">
+<span>Dev</span>
+<span>em  &lt;T&gt;</span>
+</a></div></nav></div><div class="--border-header-top"><div class="container"><ul class="header-navegacao-cursos-lista"><li class="header-cursos-lista-categoria ">
+<a href="https://www.alura.com.br/escola-programacao" class="unlinkify"><div class="header-lista-categoria-nome">
+<span>Programação</span></div>
+</a><div class="header-color--link" style="color: #00c86f;"></div></li><li class="header-cursos-lista-categoria ">
+<a href="https://www.alura.com.br/escola-front-end" class="unlinkify"><div class="header-lista-categoria-nome">
+<span>Front-end</span></div>
+</a><div class="header-color--link" style="color: #6bd1ff;"></div></li><li class="header-cursos-lista-categoria ">
+<a href="https://www.alura.com.br/escola-data-science" class="unlinkify"><div class="header-lista-categoria-nome">
+<span>Data Science</span></div>
+</a><div class="header-color--link" style="color: #9cd33b;"></div></li><li class="header-cursos-lista-categoria ">
+<a href="https://www.alura.com.br/escola-devops" class="unlinkify"><div class="header-lista-categoria-nome">
+<span>DevOps</span></div>
+</a><div class="header-color--link" style="color: #f16165;"></div></li><li class="header-cursos-lista-categoria ">
+<a href="https://www.alura.com.br/escola-design-ux" class="unlinkify"><div class="header-lista-categoria-nome">
+<span>UX &amp; Design</span></div>
+</a><div class="header-color--link" style="color: #dc6ebe;"></div></li><li class="header-cursos-lista-categoria ">
+<a href="https://www.alura.com.br/escola-mobile" class="unlinkify"><div class="header-lista-categoria-nome">
+<span>Mobile</span></div>
+</a><div class="header-color--link" style="color: #ffba05;"></div></li><li class="header-cursos-lista-categoria ">
+<a href="https://www.alura.com.br/escola-inovacao-gestao" class="unlinkify"><div class="header-lista-categoria-nome">
+<span>Inovação &amp; Gestão</span></div>
+</a><div class="header-color--link" style="color: #ff8c2a;"></div></li></ul></div></div></header><section class="cosmos-container-color"><div class="cosmos-color"><div class="cosmos artigos-topo"><div class="container">
+<a href="https://www.alura.com.br/artigos" class="artigos-topo__label">
+Artigos
+</a>
+&gt;
+<a class="artigos-topo__label --artigos-strong" href="https://www.alura.com.br/artigos/front-end" style="color:#6bd1ff">Front-end</a></div></div></div>
+ <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.alura.com.br/artigos/preenchendo-formulario-html-automaticamente-com-ajax"
+  },
+  "headline": "Preenchendo formulário HTML automaticamente com AJAX",
+  "description": "Aprenda como preencher formularios feitos em HTML automaticamente com AJAX.",
+  "image": "https://www.alura.com.br/artigos/assets/uploads/2017/01/preenchendo-formulario-html-automaticamente-com-ajax.jpg",
+  "datePublished": "2017-01-16",
+    "dateModified": "2021-10-05",
+    "author": {
+        "@type": "Organization",
+    "name": "Alura"
+      },
+   "publisher": {
+    "@type": "Organization",
+    "name": "Alura",
+    "url": "https://www.alura.com.br",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.alura.com.br/assets/img/amp/logo-publisher.1636535197.png",
+      "height" : 60, 
+      "width" : 600 
+    }
+  }
+}</script> <section class="cosmos-color"><article class="cosmos"><div class="cosmos-header"><h1>Preenchendo formulário HTML automaticamente com AJAX</h1><div class="cosmos-image__wrapper">
+<img src="./Preenchendo formulário HTML automaticamente com AJAX _ Alura Cursos Online_files/preenchendo-formulario-html-automaticamente-com-ajax.jpg" alt="Preenchendo formulário HTML automaticamente com AJAX" class="cosmos-image cosmos-banner-top" style="border: none; padding: 0px; width: 100%; height: 300px; object-fit: cover; max-width: none;"></div><div class="cosmos-header-info"><div class="cosmos-author">
+<img class="cosmos-author-img" src="./Preenchendo formulário HTML automaticamente com AJAX _ Alura Cursos Online_files/avatar_m.png" alt="matheus.castiglioni" width="50" height="50"><div><div class="cosmos-author-name">matheus.castiglioni</div>
+<time class="cosmos-author-date" datetime="2017-01-16 13:23">16/01/2017</time></div></div><div class="cosmos-container-social-media"><p class="cosmos-text-social-media">Compartilhe</p><ul class="cosmos-container-flex-social-media"><li class="--icon-twitter">
+<a href="https://twitter.com/share?url=https://www.alura.com.br/artigos/preenchendo-formulario-html-automaticamente-com-ajax"></a></li><li class="--icon-linkedin">
+<a href="https://linkedin.com/shareArticle?url=https://www.alura.com.br/artigos/preenchendo-formulario-html-automaticamente-com-ajax"></a></li><li class="--icon-facebook">
+<a href="https://facebook.com/share.php?u=https://www.alura.com.br/artigos/preenchendo-formulario-html-automaticamente-com-ajax"></a></li><li class="--icon-whatsapp">
+<a href="https://api.whatsapp.com/send?text=https://www.alura.com.br/artigos/preenchendo-formulario-html-automaticamente-com-ajax"></a></li></ul></div><div class="cosmos-related-gruides"></div></div></div><div class="cosmos-header-line"></div><p><img src="./Preenchendo formulário HTML automaticamente com AJAX _ Alura Cursos Online_files/preenchendo-formulario-html-automaticamente-com-ajax.jpg" alt="Imagem com um notebook, códigos e a palavra &quot;AJAX&quot; em branco e no centro." class="cosmos-image"></p><p>Durante o desenvolvimento de um projeto web, nosso cliente pediu que no cadastro de endereço criássemos um recurso para busca de CEP automática facilitando o processo para o usuário, mas como podermos fazer isso?</p><p>Inicialmente, poderíamos adicionar algum tipo de botão ou listener que ficasse responsável em fazer uma requisição HTTP enviando o CEP, e então, recarregasse o formulário automaticamente.</p><p>Porém, quando estamos em formulários de cadastro de endereço, como por exemplo em sites de e-commerce, é muito comum adicionarmos apenas o CEP e as informações já aparecerem sem ao menos recarregar a página, certo?</p><p>Da nossa forma inicial, ou seja, recarregando a página, não entregaríamos essa experiência para o usuário... E agora?</p><h3>Entendendo o AJAX</h3><p>Através do Javascript conseguimos enviar requisições para determinadas URLs e obter suas respostas sem que as páginas sejam recarregadas, em outras palavras, quando o usuário sair do campo do CEP ou clicar em um botão, a busca do mesmo será efetuada e as informações serão preenchidas para usuário sem que a página recarregue.</p><p>Esse método de requisição no Javascript é conhecido como <a href="https://developer.mozilla.org/pt-BR/docs/AJAX" target="_blank" rel="noopener">AJAX</a>. Legal, mas como poderíamos aplicar esse tal de AJAX? Em um primeiro momento podemos pensar em simplesmente realizar o download de uma biblioteca contendo a funcionalidade que precisamos, talvez a mais famosa seja o <a href="https://jquery.com/" target="_blank" rel="noopener">JQuery</a>.</p><p>Porém não parece ser uma boa idéia incorporar uma biblioteca em nosso projeto apenas para realizar um AJAX, pois estaríamos utilizando cerca de 10% do que a mesma pode nos oferecer.</p><p>Então como devemos solucionar o problema sem criar uma dependência com terceiros? Criaremos nossa própria funcionalidade para buscar os CEPs para atingir o resultado desejado.</p><h3>Pegando o formulário HTML</h3><p>Nosso primeiro passo será de fato pegar o nosso formulário HTML para aplicarmos o AJAX. Para este exemplo farei uso <a href="https://github.com/mahenrique94/ajax-com-js-puro/archive/master.zip" target="_blank" rel="noopener">deste formulário</a> que está no meu Github, ou seja, se você quiser seguir o passo a passo, pode baixar também! ;)</p><p><img src="./Preenchendo formulário HTML automaticamente com AJAX _ Alura Cursos Online_files/Formulario.jpg" alt="" class="cosmos-image"></p><p>Com o HTML pronto, precisamos começar a implementação da busca de CEP conforme nosso cliente havia solicitado, para tal recurso iremos utilizar o <a href="https://pt.wikipedia.org/wiki/Web_service" target="_blank" rel="noopener">web service</a> do <a href="https://viacep.com.br/" target="_blank" rel="noopener">viacep</a>, um serviço gratuito na web que nos permite recuperar informações referente a determinados CEP's.</p><h3>Criando requisições com XMLHttpRequest</h3><p>O Javascript nativo possui um objeto responsável por realizar requisições AJAX conhecido como <a href="https://developer.mozilla.org/pt-BR/docs/Web/API/XMLHttpRequest" target="_blank" rel="noopener"><code>XMLHttpRequest</code></a>, ou seja, por meio dele podemos recuperar dados de uma determinada URL. Apesar do nome, ele pode ser usado para recuperar qualquer tipo de dado e fornece suporte aos protocólos <em>HTTP, FILE e FTP</em>.</p><p>Vamos então criar uma instância do objeto para começarmos a utilizá-lo:</p><pre><code class="hljs javascript">
+<span class="hljs-keyword"><span class="hljs-keyword">let</span></span> xhr = <span class="hljs-keyword"><span class="hljs-keyword">new</span></span> XMLHttpRequest();
+</code></pre><p>Com o objeto criado, vamos utilizar o método <a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/open" target="_blank" rel="noopener"><code>open</code></a> para começarmos a criar a nossa requisição:</p><pre><code class="hljs javascript">
+xhr.open(<span class="hljs-string"><span class="hljs-string">'GET'</span></span>, url, <span class="hljs-literal"><span class="hljs-literal">true</span></span>);
+</code></pre><p>O método open recebe três parâmetros, sendo eles:</p><ol><li>O <a href="https://www.alura.com.br/artigos/metodos_de_requisicao_do_http">verbo HTTP</a> a ser utilizado para realizar a requisição, o mesmo deve seguir o <a href="https://www.caelum.com.br/apostila-vraptor-hibernate/rest/#11-1-o-que-e-rest">padrão REST</a>.</li><li>A URL que pretendemos obter os dados.</li><li>Um argumento booleano informando se a requisição deve ser assíncrona ou síncrona.</li></ol><p>Agora precisamos implementar a propriedade <a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/onreadystatechange" target="_blank" rel="noopener"><code>onreadystatechange</code></a> que é disparada sempre que nossa requisição sofre alguma alteração durante seu processamento:</p><pre><code class="hljs javascript">
+xhr.onreadystatechange = <span class="hljs-function"><span class="hljs-keyword"><span class="hljs-function"><span class="hljs-keyword">function</span></span></span><span class="hljs-function">(</span><span class="hljs-params"></span><span class="hljs-function"><span class="hljs-params"></span>) </span></span>{
+
+}
+</code></pre><p>Repare que passamos uma função de <em>callback</em>, ou seja, uma função que sempre será executada assim que a requisição sofrer alguma alteração. Quando implementamos essa função precisamos tomar alguns cuidados, o primeiro é verificar se a mesma foi finalizada, mas como fazer essa verificação? Fazemos isso através do <a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/readyState" target="_blank" rel="noopener"><code>xhr.readyState</code></a>:</p><pre><code class="hljs javascript">
+xhr.onreadystatechange = <span class="hljs-function"><span class="hljs-keyword"><span class="hljs-function"><span class="hljs-keyword">function</span></span></span><span class="hljs-function">(</span><span class="hljs-params"></span><span class="hljs-function"><span class="hljs-params"></span>) </span></span>{ 
+<span class="hljs-keyword"><span class="hljs-keyword">if</span></span> (xhr.readyState == <span class="hljs-number"><span class="hljs-number">4</span></span>) 
+{ <span class="hljs-comment"><span class="hljs-comment">//requisição finalizada } </span></span>
+}
+</code></pre><p>O código 4 nos informa que a requisição foi finalizada, porém ainda não é suficiente, afinal, f<strong>inalizada não significa que foi bem sucedida</strong>, portanto, é necessário verificar se ela foi realizada com sucesso também! Portanto, faremos uso do <a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/status" target="_blank" rel="noopener"><code>xhr.status</code></a> pra isso:</p><pre><code class="hljs javascript">
+xhr.onreadystatechange = <span class="hljs-function"><span class="hljs-keyword"><span class="hljs-function"><span class="hljs-keyword">function</span></span></span><span class="hljs-function">(</span><span class="hljs-params"></span><span class="hljs-function"><span class="hljs-params"></span>) </span></span>{ 
+<span class="hljs-keyword"><span class="hljs-keyword">if</span></span> (xhr.readyState == <span class="hljs-number"><span class="hljs-number">4</span></span>) {
+<span class="hljs-keyword"><span class="hljs-keyword">if</span></span> (xhr.status = <span class="hljs-number"><span class="hljs-number">200</span></span>) 
+<span class="hljs-comment"><span class="hljs-comment">// faz alguma coisa</span></span>
+} }
+</code></pre><p>O código 200 nos informa que a requisição obteve sucesso durante seu processamento. Isso significa que agora podemos acessar a resposta que o servidor nos enviou e realizar alguma função desejada.</p><h3>Preenchendo os campos no formulário</h3><p>Até o momento já devemos ser capazes de obter as informações do nosso serviço de CEP, começaremos então a criar uma função que será invocada a cada clique em um botão:</p><pre><code class="hljs javascript">
+<span class="hljs-function"><span class="hljs-keyword"><span class="hljs-function"><span class="hljs-keyword">function</span></span></span><span class="hljs-function"> </span><span class="hljs-title"><span class="hljs-function"><span class="hljs-title">buscaCep</span></span></span><span class="hljs-function">(</span><span class="hljs-params"></span><span class="hljs-function"><span class="hljs-params"></span>) </span></span>{
+
+}
+</code></pre><p>O primeiro passo será pegar a referência do campo CEP para obtermos seu valor:</p><pre><code class="hljs javascript">
+<span class="hljs-keyword"><span class="hljs-keyword">let</span></span> inputCep = <span class="hljs-built_in"><span class="hljs-built_in">document</span></span>.querySelector(<span class="hljs-string"><span class="hljs-string">'input[name=cep]'</span></span>);
+<span class="hljs-keyword"><span class="hljs-keyword">let</span></span> cep = inputCep.value;
+</code></pre><p>Feito isso já podemos começar construir nossa URL:</p><pre><code class="hljs javascript">
+<span class="hljs-keyword"><span class="hljs-keyword">let</span></span> url = <span class="hljs-string"><span class="hljs-string">'http://viacep.com.br/ws/'</span></span> + cep + <span class="hljs-string"><span class="hljs-string">'/json'</span></span>;
+</code></pre><p>Com nossa URL pronta, podemos começar a implementar o <code>XMLHttpRequest</code> conforme visto anteriormente:</p><pre><code class="hljs javascript">
+<span class="hljs-keyword"><span class="hljs-keyword">let</span></span> xhr = <span class="hljs-keyword"><span class="hljs-keyword">new</span></span> XMLHttpRequest(); 
+xhr.open(<span class="hljs-string"><span class="hljs-string">'GET'</span></span>, url, <span class="hljs-literal"><span class="hljs-literal">true</span></span>); 
+xhr.onreadystatechange = <span class="hljs-function"><span class="hljs-keyword"><span class="hljs-function"><span class="hljs-keyword">function</span></span></span><span class="hljs-function">(</span><span class="hljs-params"></span><span class="hljs-function"><span class="hljs-params"></span>) </span></span>{ 
+<span class="hljs-keyword"><span class="hljs-keyword">if</span></span> (xhr.readyState == <span class="hljs-number"><span class="hljs-number">4</span></span>) { 
+<span class="hljs-keyword"><span class="hljs-keyword">if</span></span> (xhr.status = <span class="hljs-number"><span class="hljs-number">200</span></span>) 
+<span class="hljs-built_in"><span class="hljs-built_in">console</span></span>.log(xhr.responseText); 
+} } 
+xhr.send(); }
+</code></pre><p>Tudo pronto, certo? Entretanto nosso web service exige que o CEP venha apenas com números, em outras palavras, se deixarmos apenas os dados que estamos pegando do campo referente ao CEP, podemos enviar, por exemplo, um CEP com o seguinte formato <code>"12345-123"</code>, que é uma forma comum em formulários na web.</p><p>Caso isso aconteça nossa requisição irá falhar e não conseguiremos obter as informações... Como podemos resolver o problema? Precisamos de fato retirar a formatação do CEP antes de enviá-lo da seguinte maneira:</p><pre><code class="hljs javascript">
+<span class="hljs-comment"><span class="hljs-comment">// código omitido </span></span>
+<span class="hljs-keyword"><span class="hljs-keyword">let</span></span> cep = inputCep.value.replace(<span class="hljs-string"><span class="hljs-string">'-'</span></span>, <span class="hljs-string"><span class="hljs-string">''</span></span>); <span class="hljs-comment"><span class="hljs-comment">// código omitido</span></span>
+</code></pre><p>Realizamos um replace para retirar o <code>-</code> do CEP, agora para testar nosso serviço podemos informar o CEP 13845-373 em nosso formulário e clicar no botão, onde iremos ver a resposta do servidor:</p><pre><code class="hljs javascript">
+{ 
+<span class="hljs-string"><span class="hljs-string">"cep"</span></span> : <span class="hljs-string"><span class="hljs-string">"13845-373"</span></span>,
+<span class="hljs-string"><span class="hljs-string">"complement"</span></span> : <span class="hljs-string"><span class="hljs-string">""</span></span>, 
+<span class="hljs-string"><span class="hljs-string">"logradouro"</span></span> : <span class="hljs-string"><span class="hljs-string">"Rua Caiapós"</span></span>, 
+<span class="hljs-string"><span class="hljs-string">"bairro"</span></span> : <span class="hljs-string"><span class="hljs-string">"Jardim Igaçaba"</span></span>, 
+<span class="hljs-string"><span class="hljs-string">"localidade"</span></span> : <span class="hljs-string"><span class="hljs-string">"Mogi Guaçu"</span></span>, 
+<span class="hljs-string"><span class="hljs-string">"uf"</span></span> : <span class="hljs-string"><span class="hljs-string">"SP"</span></span>, 
+<span class="hljs-string"><span class="hljs-string">"unidade"</span></span> : <span class="hljs-string"><span class="hljs-string">""</span></span>, 
+<span class="hljs-string"><span class="hljs-string">"ibge"</span></span> : <span class="hljs-string"><span class="hljs-string">"3530706"</span></span>, 
+<span class="hljs-string"><span class="hljs-string">"gia"</span></span> : <span class="hljs-string"><span class="hljs-string">"4558"</span></span> }
+</code></pre><p>Como podemos ver, através do <a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/responseText" target="_blank" rel="noopener"><code>responseText</code></a> conseguimos obter a resposta do nosso servidor, porém o JSON está em formato de string, sendo assim, precisamos convertê-lo para um objeto JSON em Javascript, podemos fazer isso através do <a href="https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse" target="_blank" rel="noopener"><code>JSON.parse</code></a>:</p><pre><code class="hljs javascript">
+<span class="hljs-comment"><span class="hljs-comment">// código omitido </span></span>
+<span class="hljs-built_in"><span class="hljs-built_in">console</span></span>.log(<span class="hljs-built_in"><span class="hljs-built_in">JSON</span></span>.parse(xhr.responseText)); <span class="hljs-comment"><span class="hljs-comment">// código omitido</span></span>
+</code></pre><p>Ao mandar nosso formulário buscar o CEP novamente, iremos notar a mudança da saída em nosso console que agora passou a ser um objeto e não uma string:</p><pre><code class="hljs javascript">
+<span class="hljs-built_in"><span class="hljs-built_in">Object</span></span> {<span class="hljs-attr"><span class="hljs-attr">cep</span></span> : <span class="hljs-string"><span class="hljs-string">"13845-373"</span></span>, <span class="hljs-attr"><span class="hljs-attr">logradouro</span></span> : <span class="hljs-string"><span class="hljs-string">"Rua Caiapós"</span></span>, <span class="hljs-attr"><span class="hljs-attr">complemento</span></span> : <span class="hljs-string"><span class="hljs-string">""</span></span>, <span class="hljs-attr"><span class="hljs-attr">bairro</span></span> : <span class="hljs-string"><span class="hljs-string">"Jardim Igaçaba"</span></span>, <span class="hljs-attr"><span class="hljs-attr">localidade</span></span> : <span class="hljs-string"><span class="hljs-string">"Mogi Guaçu"</span></span>...}
+</code></pre><p>Para finalizar, precisamos pegar os dados do objeto e passar para nossos inputs, para isso vamos criar uma função que recebe o JSON como parâmetro e popula nossos campos:</p><pre><code class="hljs javascript">
+<span class="hljs-function"><span class="hljs-keyword"><span class="hljs-function"><span class="hljs-keyword">function</span></span></span><span class="hljs-function"> </span><span class="hljs-title"><span class="hljs-function"><span class="hljs-title">preencheCampos</span></span></span><span class="hljs-function">(</span><span class="hljs-params"><span class="hljs-function"><span class="hljs-params">json</span></span></span><span class="hljs-function">) </span></span>{ 
+<span class="hljs-built_in"><span class="hljs-built_in">document</span></span>.querySelector(<span class="hljs-string"><span class="hljs-string">'input[name=endereco]'</span></span>).value = json.logradouro;
+<span class="hljs-built_in"><span class="hljs-built_in">document</span></span>.querySelector(<span class="hljs-string"><span class="hljs-string">'input[name=bairro]'</span></span>).value = json.bairro; 
+<span class="hljs-built_in"><span class="hljs-built_in">document</span></span>.querySelector(<span class="hljs-string"><span class="hljs-string">'input[name=complemento]'</span></span>).value = json.complemento;
+<span class="hljs-built_in"><span class="hljs-built_in">document</span></span>.querySelector(<span class="hljs-string"><span class="hljs-string">'input[name=cidade]'</span></span>).value = json.localidade; 
+<span class="hljs-built_in"><span class="hljs-built_in">document</span></span>.querySelector(<span class="hljs-string"><span class="hljs-string">'input[name=estado]'</span></span>).value = json.uf; }
+</code></pre><p>Nossa função completa fica da seguinte maneira:</p><pre><code class="hljs javascript">
+<span class="hljs-function"><span class="hljs-keyword"><span class="hljs-function"><span class="hljs-keyword">function</span></span></span><span class="hljs-function"> </span><span class="hljs-title"><span class="hljs-function"><span class="hljs-title">buscaCep</span></span></span><span class="hljs-function">(</span><span class="hljs-params"></span><span class="hljs-function"><span class="hljs-params"></span>) </span></span>{ 
+<span class="hljs-keyword"><span class="hljs-keyword">let</span></span> inputCep = <span class="hljs-built_in"><span class="hljs-built_in">document</span></span>.querySelector(<span class="hljs-string"><span class="hljs-string">'input\[name=cep\]'</span></span>); 
+<span class="hljs-keyword"><span class="hljs-keyword">let</span></span> cep = inputCep.value.replace(<span class="hljs-string"><span class="hljs-string">'-'</span></span>, <span class="hljs-string"><span class="hljs-string">''</span></span>);
+<span class="hljs-keyword"><span class="hljs-keyword">let</span></span> url = <span class="hljs-string"><span class="hljs-string">'http://viacep.com.br/ws/'</span></span> + cep + <span class="hljs-string"><span class="hljs-string">'/json'</span></span>; 
+<span class="hljs-keyword"><span class="hljs-keyword">let</span></span> xhr = <span class="hljs-keyword"><span class="hljs-keyword">new</span></span> XMLHttpRequest(); xhr.open(<span class="hljs-string"><span class="hljs-string">'GET'</span></span>, url, <span class="hljs-literal"><span class="hljs-literal">true</span></span>); 
+xhr.onreadystatechange = <span class="hljs-function"><span class="hljs-keyword"><span class="hljs-function"><span class="hljs-keyword">function</span></span></span><span class="hljs-function">(</span><span class="hljs-params"></span><span class="hljs-function"><span class="hljs-params"></span>) </span></span>{ 
+<span class="hljs-keyword"><span class="hljs-keyword">if</span></span> (xhr.readyState == <span class="hljs-number"><span class="hljs-number">4</span></span>) { 
+<span class="hljs-keyword"><span class="hljs-keyword">if</span></span> (xhr.status = <span class="hljs-number"><span class="hljs-number">200</span></span>) preencheCampos(<span class="hljs-built_in"><span class="hljs-built_in">JSON</span></span>.parse(xhr.responseText)); } } 
+xhr.send(); }
+</code></pre><p>Ao realizarmos a busca novamente iremos notar que nossos inputs serão preenchidos com a resposta do servidor:</p><p><img src="./Preenchendo formulário HTML automaticamente com AJAX _ Alura Cursos Online_files/Formulario-Preenchido.jpg" alt="" class="cosmos-image"></p><p>Veja que agora já somos capazes de realizar requisições AJAX do tipo GET com Javascript puro. Dessa forma evitamos a necessidade de depender de uma biblioteca para um simples recurso e conseguimos entregar a funcionalidade nova para nosso cliente.</p><div class="cosmos-related-articles"><h5 class="cosmos-related-articles-title">Leia também:</h5><ul class="cosmos-related-articles-list"><li><a href="https://www.alura.com.br/artigos/comecando-com-fetch-no-javascript">Começando com fetch no Javascript</a></li><li><a href="https://www.alura.com.br/artigos/lidando-com-parametros-obrigatorios-em-javascript">Lidando com parâmetros obrigatórios em JavaScript </a></li><li><a href="https://www.alura.com.br/artigos/tagged-template-literals">Tagged Template Literals</a></li><li><a href="https://www.alura.com.br/artigos/ordenacao-de-numeros-no-javascript-nao-funciona">Ordenação de números no JavaScript não funciona? </a></li><li><a href="https://www.alura.com.br/artigos/como-foi-braziljs">Como foi a BrazilJS? </a></li></ul></div></article></section><div class="cosmos-other-files"><div class="container --container-banner-flex"><div class="categories-artigos" style="background:#6bd1ff;">
+<svg class="categories-artigos-icon" style="fill:#ffffff" xmlns:xlink="http://www.w3.org/1999/xlink">
+<use xlink:href="/svg,1636535197/categorias#icon-categorias-front-end"></use>
+</svg></div><p class="cosmos-other-files-text">Veja outros artigos sobre <a href="https://www.alura.com.br/artigos/front-end" style="color:#6bd1ff">Front-end</a></p></div></div><div class="cosmos-color"><div class="cosmos --newsletter-spacing"><link rel="stylesheet" href="./Preenchendo formulário HTML automaticamente com AJAX _ Alura Cursos Online_files/subscribeNewsletterCard.1636535197.css"><div class="subscribeNewsletterCard-container"><section class="subscribeNewsletterCard-wrapper"><div class="subscribeNewsletterCard-decoration"></div><div class="subscribeNewsletterCard-busca-box container"><div class="subscribeNewsletterCard-box-texto"><p class="subscribeNewsletterCard-texto-bold">Quer mergulhar em tecnologia e aprendizagem?</p><p class="subscribeNewsletterCard-texto-normal">Receba a newsletter que o nosso CEO escreve pessoalmente,
+com insights do mercado de trabalho, ciência e desenvolvimento de software</p></div><form id="subscribeNewsletterCard__activecampaign" class="subscribeNewsletterCard-form" action="https://www.alura.com.br/api/activecampaign" method="POST">
+<input type="hidden" name="list" value="14">
+<input type="hidden" name="retorno" value="/newsletter-cadastrado">
+<input class="activecampaign-input subscribeNewsletterCard-input" id="activecampaing-email" type="email" placeholder="Escreva seu email" name="email" required="">
+<button class="activecampaign-button subscribeNewsletterCard-button" type="submit">Me inscreva</button><input type="hidden" name="full_url" value="https://www.alura.com.br/artigos/preenchendo-formulario-html-automaticamente-com-ajax"><input type="hidden" name="user_agent" value="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36"><input type="hidden" name="referral" value="https://cursos.alura.com.br/"></form></div></section></div> <script>(function() {
+            function criaCampo(nome, valor, form) {
+                if (valor === null) return;
+
+                var input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = nome;
+                input.value = valor;
+
+                form.appendChild(input);
+            }
+
+            function param(name) {
+                var url = location.href;
+                name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+                var regexS = "[\\?&]"+name+"=([^&#]*)";
+                var regex = new RegExp( regexS );
+                var results = regex.exec( url );
+                return results == null ? null : results[1];
+            }
+
+            function showNewsletterError() {
+                document.querySelector('.newsletter-message-error').classList.remove('newsletter-message-error--disabled');
+            }
+
+            function valida() {
+                var isValid = true;
+                var inputList = document.querySelector('#subscribeNewsletterCard__activecampaign')['list'];
+                var inputEmail = document.querySelector('#subscribeNewsletterCard__activecampaign')['email'];
+
+                isValid = validaEmail(inputEmail.value) && validaList(inputList.value);
+
+                if(!isValid) {
+                    showNewsletterError();
+                }
+
+                return isValid;
+            }
+
+            function validaList(list) {
+                return list != '-1';
+            }
+
+            function validaEmail(email) {
+                var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(email);
+            }
+
+            var form = document.querySelector('#subscribeNewsletterCard__activecampaign');
+            if(!form) return;
+
+            criaCampo('utm_source', param('utm_source'), form);
+            criaCampo('utm_campaign', param('utm_campaign'), form);
+            criaCampo('utm_medium', param('utm_medium'), form);
+            criaCampo('utm_term', param('utm_term'), form);
+            criaCampo('utm_content', param('utm_content'), form);
+            criaCampo('full_url', location.href, form);
+            criaCampo('user_agent', navigator.userAgent, form);
+            criaCampo('referral', document.referrer, form);
+
+            form.onsubmit = valida;
+
+        })();</script> </div></div></section> <script async="" src="./Preenchendo formulário HTML automaticamente com AJAX _ Alura Cursos Online_files/ei.js.download"></script> <link rel="stylesheet" href="./Preenchendo formulário HTML automaticamente com AJAX _ Alura Cursos Online_files/footer.1638241251.css"><footer class="footer"><div class="container"><div class="footer-navegue"><h2 class="footer-navegacao-titulo">Navegação</h2><ul class="footer-navegue-lista"><li class="footer-navegue-lista-link"><a href="https://www.alura.com.br/planos-cursos-online" gtm-data="footer_primeira_secao_053">Planos</a></li><li class="footer-navegue-lista-link"><a href="https://www.alura.com.br/cursos-online-tecnologia" gtm-data="footer_primeira_secao_054">Todos os cursos</a></li><li class="footer-navegue-lista-link"><a href="https://www.alura.com.br/cases">Alura Cases</a></li><li class="footer-navegue-lista-link"><a href="https://www.alura.com.br/guias">Guia de carreira</a></li><li class="footer-navegue-lista-link"><a href="https://www.alura.com.br/instrutores" gtm-data="footer_primeira_secao_056">Instrutores</a></li><li class="footer-navegue-lista-link"><a href="https://grupoalura.gupy.io/">Trabalhe conosco</a></li><li class="footer-navegue-lista-link"><a href="https://www.alura.com.br/quero-ser-instrutor" gtm-data="footer_primeira_secao_057">Como virar instrutor</a></li><li class="footer-navegue-lista-link"><a href="https://www.alura.com.br/artigos" gtm-data="footer_primeira_secao_058">Artigos</a></li><li class="footer-navegue-lista-link"><a href="https://www.alura.com.br/escolas">Para Escolas</a></li><li class="footer-navegue-lista-link"><a href="https://www.alura.com.br/podcasts">Podcasts</a></li><li class="footer-navegue-lista-link"><a href="https://www.alura.com.br/politica-de-privacidade" gtm-data="footer_primeira_secao_061">Política de Privacidade</a></li><li class="footer-navegue-lista-link"><a href="https://www.alura.com.br/termos-de-uso" gtm-data="footer_primeira_secao_062">Termos de Uso</a></li><li class="footer-navegue-lista-link"><a href="https://www.alura.com.br/sobre" gtm-data="footer_primeira_secao_063">Sobre nós</a></li><li class="footer-navegue-lista-link"><a href="https://www.alura.com.br/como-funciona" gtm-data="footer_primeira_secao_064">Como Funciona</a></li><li class="footer-navegue-lista-link"><a href="https://www.alura.com.br/dev-em-t" gtm-data="footer_primeira_secao_065">Dev em &lt;T&gt;</a></li><li class="footer-navegue-lista-link"><a href="https://suporte.alura.com.br/" gtm-data="footer_primeira_secao_066">Perguntas frequentes</a></li><li class="footer-navegue-lista-link"><a href="https://status.alura.com.br/">Status</a></li></ul><h2 class="footer-navegacao-titulo">Fale com a gente</h2><ul class="footer-navegue-lista"><li class="footer-navegue-lista-link whatsapp-icon"><a href="https://api.whatsapp.com/send?phone=5511984510286">Whatsapp</a></li><li class="footer-navegue-lista-link"><a href="https://www.alura.com.br/contato">Email e telefone</a></li></ul><h2 class="footer-navegacao-titulo">Blog</h2><ul class="footer-navegue-lista"><li class="footer-navegue-lista-link">
+<a href="https://www.alura.com.br/artigos/programacao">
+Programação							</a></li><li class="footer-navegue-lista-link">
+<a href="https://www.alura.com.br/artigos/front-end">
+Front-end							</a></li><li class="footer-navegue-lista-link">
+<a href="https://www.alura.com.br/artigos/data-science">
+Data Science							</a></li><li class="footer-navegue-lista-link">
+<a href="https://www.alura.com.br/artigos/devops">
+DevOps							</a></li><li class="footer-navegue-lista-link">
+<a href="https://www.alura.com.br/artigos/design-ux">
+UX &amp; Design							</a></li><li class="footer-navegue-lista-link">
+<a href="https://www.alura.com.br/artigos/mobile">
+Mobile							</a></li><li class="footer-navegue-lista-link">
+<a href="https://www.alura.com.br/artigos/inovacao-gestao">
+Inovação &amp; Gestão							</a></li></ul></div><div class="footer-card-hotLinks social-mobile"><p class="footer-navegue-lista-link --description">
+<span class="footer-empresa-item">AOVS Sistemas de Informática S.A</span>
+<span class="footer-empresa-item">CNPJ 05.555.382/0001-33</span></p><h2 class="footer-card-hotLinks-titulo">Nossas redes e apps</h2><div class="footer-card-hotLinks-info footer-card-redes">
+<a href="https://www.youtube.com/alura" gtm-data="footer_primeira_secao_065" class="footer-card-hotLinks-link" target="_blank" rel="noopener" title="YouTube da Alura">
+<svg class="footer-card-hotLinks-icon footer-card-hotLinks-youtube"><use xlink:href="/svg,1636535197/footer#icon-footer-youtube"></use></svg>
+<span>YouTube</span>
+</a>
+<a href="https://www.facebook.com/AluraCursosOnline/" gtm-data="footer_primeira_secao_066" class="footer-card-hotLinks-link" target="_blank" rel="noopener" title="Facebook da Alura">
+<svg class="footer-card-hotLinks-icon footer-card-hotLinks-facebook"><use xlink:href="/svg,1636535197/footer#icon-footer-facebook"></use></svg>
+<span>Facebook</span>
+</a>
+<a href="https://twitter.com/aluraonline" gtm-data="footer_primeira_secao_067" class="footer-card-hotLinks-link" target="_blank" rel="noopener" title="Twitter da Alura">
+<svg class="footer-card-hotLinks-icon footer-card-hotLinks-twitter"><use xlink:href="/svg,1636535197/footer#icon-footer-twitter"></use></svg>
+<span>Twitter</span>
+</a>
+<a href="https://instagram.com/aluraonline" class="footer-card-hotLinks-link" gtm-data="footer_primeira_secao_073" target="_blank" rel="noopener" title="Instagram da Alura">
+<svg class="footer-card-hotLinks-icon footer-card-hotLinks-instagram"><use xlink:href="/svg,1636535197/footer#icon-footer-instagram"></use></svg>
+<span>Instagram</span>
+</a></div><div class="footer-card-hotLinks-info footer-card-mobile">
+<a href="https://play.google.com/store/apps/details?id=br.com.alura.mobi&amp;hl=pt_BR" gtm-data="footer_primeira_secao_069" class="footer-card-hotLinks-link" target="_blank" rel="noopener" title="Baixar na Google Play Store">
+<svg class="footer-card-hotLinks-icon footer-card-hotLinks-mobile"><use xlink:href="/svg,1636535197/footer#icon-footer-googleplay"></use></svg>
+<span>Google Play Store</span>
+</a>
+<a href="https://itunes.apple.com/br/app/alura-cursos-online/id1225776635" gtm-data="footer_primeira_secao_070" class="footer-card-hotLinks-link" target="_blank" rel="noopener" title="Baixar na AppStore">
+<svg class="footer-card-hotLinks-icon footer-card-hotLinks-mobile"><use xlink:href="/svg,1636535197/footer#icon-footer-appstore"></use></svg>
+<span>AppStore</span>
+</a></div></div><div class="footer-column footer-column-cards"><link rel="stylesheet" href="./Preenchendo formulário HTML automaticamente com AJAX _ Alura Cursos Online_files/activeCampaignNewsletterForm.1636535197.css"><div class="newsletter"><h2 class="newsletter-titulo">Novidades e Lançamentos</h2><form id="newsletter-form__activecampaign" class="newsletter-form" action="https://www.alura.com.br/api/activecampaign" method="POST"><input type="hidden" name="list" value="14">
+<input type="hidden" name="retorno" value="/newsletter-cadastrado"><label for="email-newsletter">Email</label>
+<input type="email" name="email" class="newsletter-input" placeholder="Seu e-mail" id="email-newsletter"><button type="submit" class="newsletter-button buttonForm">Receber</button>
+<span class="newsletter-message-error newsletter-message-error--disabled">Não foi possível assinar a newsletter</span><input type="hidden" name="full_url" value="https://www.alura.com.br/artigos/preenchendo-formulario-html-automaticamente-com-ajax"><input type="hidden" name="user_agent" value="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36"><input type="hidden" name="referral" value="https://cursos.alura.com.br/"></form></div> <script>(function() {
+            function criaCampo(nome, valor, form) {
+                if (valor === null) return;
+
+                var input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = nome;
+                input.value = valor;
+
+                form.appendChild(input);
+            }
+
+            function param(name) {
+                var url = location.href;
+                name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+                var regexS = "[\\?&]"+name+"=([^&#]*)";
+                var regex = new RegExp( regexS );
+                var results = regex.exec( url );
+                return results == null ? null : results[1];
+            }
+
+            function showNewsletterError() {
+                document.querySelector('.newsletter-message-error').classList.remove('newsletter-message-error--disabled');
+            }
+
+            function valida() {
+                var isValid = true;
+                var inputList = document.querySelector('#newsletter-form__activecampaign')['list'];
+                var inputEmail = document.querySelector('#newsletter-form__activecampaign')['email'];
+
+                isValid = validaEmail(inputEmail.value) && validaList(inputList.value);
+
+                if(!isValid) {
+                    showNewsletterError();
+                }
+
+                return isValid;
+            }
+
+            function validaList(list) {
+                return list != '-1';
+            }
+
+            function validaEmail(email) {
+                var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(email);
+            }
+
+            var form = document.querySelector('#newsletter-form__activecampaign');
+            if(!form) return;
+
+            criaCampo('utm_source', param('utm_source'), form);
+            criaCampo('utm_campaign', param('utm_campaign'), form);
+            criaCampo('utm_medium', param('utm_medium'), form);
+            criaCampo('utm_term', param('utm_term'), form);
+            criaCampo('utm_content', param('utm_content'), form);
+            criaCampo('full_url', location.href, form);
+            criaCampo('user_agent', navigator.userAgent, form);
+            criaCampo('referral', document.referrer, form);
+
+            form.onsubmit = valida;
+
+        })();</script> <div class="footer-navegue empresa-governo"><h2 class="footer-navegacao-titulo">Alura na sua empresa</h2><ul class="footer-navegue-lista"><li class="footer-navegue-lista-link --description">Desenvolva seu time com apoio da nossa solução</li><li class="footer-navegue-lista-link"><a href="https://www.alura.com.br/empresas/cases">Cases</a></li><li class="footer-navegue-lista-link"><a href="https://www.alura.com.br/empresas/comunidade">Comunidade</a></li><li class="footer-navegue-lista-link"><a href="https://www.alura.com.br/empresas/guias-de-carreira">Guia de Carreira</a></li><li class="footer-navegue-lista-link"><a href="https://www.alura.com.br/empresas/na-midia">Na Mídia</a></li><li class="footer-navegue-lista-link --description"><a href="https://www.alura.com.br/empresas">Conheça mais</a></li></ul><h2 class="footer-navegacao-titulo">Comunidade</h2><ul class="footer-navegue-lista"><li class="footer-navegue-lista-link"><a href="https://www.scuba.dev.br/" gtm-data="footer_primeira_secao_067">Scuba Dev</a></li><li class="footer-navegue-lista-link"><a href="https://www.alura.com.br/imersao" gtm-data="footer_primeira_secao_068">Imersões</a></li><li class="footer-navegue-lista-link"><a href="https://www.alura.com.br/depoimentos" gtm-data="footer_primeira_secao_069">Depoimentos</a></li><li class="footer-navegue-lista-link"><a href="https://www.alura.com.br/instrutores" gtm-data="footer_primeira_secao_061">Nossos Instrutores</a></li></ul><h2 class="footer-navegacao-titulo">Parceiros</h2><ul class="footer-navegue-lista"><li class="footer-navegue-lista-link --description">
+<img src="./Preenchendo formulário HTML automaticamente com AJAX _ Alura Cursos Online_files/scale-up-endeavor.1636535197.png" alt="Programa de aceleração Scale-Up Endeavor" class="footer-navegue-lista__image" loading="lazy"></li><li class="footer-navegue-lista-link --description --partners">
+Nós, da Alura, somos uma das Scale-Ups selecionadas pela Endeavor, programa de aceleração das empresas que mais crescem no país.</li><li class="footer-navegue-lista-link --description">
+<img src="./Preenchendo formulário HTML automaticamente com AJAX _ Alura Cursos Online_files/google-alumni-2021.1636535197.png" alt="Growth Academy 2021 do Google For Startups" class="footer-navegue-lista__image" loading="lazy"></li><li class="footer-navegue-lista-link --description --partners">
+Fomos uma das 7 startups selecionadas pelo Google For Startups a participar do programa Growth Academy em 2021.</li></ul></div></div><div class="footer-info"><div class="footer-logos">
+<a class="footer-logos-home" gtm-data="footer_primeira_secao_050" href="https://www.alura.com.br/">
+<img src="./Preenchendo formulário HTML automaticamente com AJAX _ Alura Cursos Online_files/alura-logo.1642527450.svg" alt="Alura" class="footer-logo" loading="lazy">
+</a></div><div class="footer-card-hotLinks social-desktop"><p class="footer-navegue-lista-link --description">
+<span class="footer-empresa-item">AOVS Sistemas de Informática S.A</span>
+<span class="footer-empresa-item">CNPJ 05.555.382/0001-33</span></p><h2 class="footer-card-hotLinks-titulo">Nossas redes e apps</h2><div class="footer-card-hotLinks-info footer-card-redes">
+<a href="https://www.youtube.com/alura" gtm-data="footer_primeira_secao_065" class="footer-card-hotLinks-link" target="_blank" rel="noopener" title="YouTube da Alura">
+<svg class="footer-card-hotLinks-icon footer-card-hotLinks-youtube"><use xlink:href="/svg,1636535197/footer#icon-footer-youtube"></use></svg>
+<span>YouTube</span>
+</a>
+<a href="https://www.facebook.com/AluraCursosOnline/" gtm-data="footer_primeira_secao_066" class="footer-card-hotLinks-link" target="_blank" rel="noopener" title="Facebook da Alura">
+<svg class="footer-card-hotLinks-icon footer-card-hotLinks-facebook"><use xlink:href="/svg,1636535197/footer#icon-footer-facebook"></use></svg>
+<span>Facebook</span>
+</a>
+<a href="https://twitter.com/aluraonline" gtm-data="footer_primeira_secao_067" class="footer-card-hotLinks-link" target="_blank" rel="noopener" title="Twitter da Alura">
+<svg class="footer-card-hotLinks-icon footer-card-hotLinks-twitter"><use xlink:href="/svg,1636535197/footer#icon-footer-twitter"></use></svg>
+<span>Twitter</span>
+</a>
+<a href="https://instagram.com/aluraonline" class="footer-card-hotLinks-link" gtm-data="footer_primeira_secao_073" target="_blank" rel="noopener" title="Instagram da Alura">
+<svg class="footer-card-hotLinks-icon footer-card-hotLinks-instagram"><use xlink:href="/svg,1636535197/footer#icon-footer-instagram"></use></svg>
+<span>Instagram</span>
+</a></div><div class="footer-card-hotLinks-info footer-card-mobile">
+<a href="https://play.google.com/store/apps/details?id=br.com.alura.mobi&amp;hl=pt_BR" gtm-data="footer_primeira_secao_069" class="footer-card-hotLinks-link" target="_blank" rel="noopener" title="Baixar na Google Play Store">
+<svg class="footer-card-hotLinks-icon footer-card-hotLinks-mobile"><use xlink:href="/svg,1636535197/footer#icon-footer-googleplay"></use></svg>
+<span>Google Play Store</span>
+</a>
+<a href="https://itunes.apple.com/br/app/alura-cursos-online/id1225776635" gtm-data="footer_primeira_secao_070" class="footer-card-hotLinks-link" target="_blank" rel="noopener" title="Baixar na AppStore">
+<svg class="footer-card-hotLinks-icon footer-card-hotLinks-mobile"><use xlink:href="/svg,1636535197/footer#icon-footer-appstore"></use></svg>
+<span>AppStore</span>
+</a></div></div></div></div></footer><section class="footer_categorias-formacoes"><div class="container"><div class="footer_categorias_wrapper"><h2 class="footer_categorias_title">Cursos</h2><div class="footer_categorias_categorias footer-navegue-lista-link"><div class="footer_categorias_categoria">
+<a href="https://www.alura.com.br/cursos-online-programacao">Cursos de Programação</a><div class="footer_categorias_subcategorias">
+<a href="https://www.alura.com.br/cursos-online-programacao/logica">
+Lógica										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-programacao/python">
+Python										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-programacao/php">
+PHP										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-programacao/java">
+Java										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-programacao/dotnet">
+.NET										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-programacao/node-js">
+Node JS										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-programacao/linguagem-c">
+C										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-programacao/computacao">
+Computação										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-programacao/jogos">
+Jogos										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-programacao/internet-das-coisas">
+IoT										</a></div></div><div class="footer_categorias_categoria">
+<a href="https://www.alura.com.br/cursos-online-front-end">Cursos de Front-end</a><div class="footer_categorias_subcategorias">
+<a href="https://www.alura.com.br/cursos-online-front-end/front-end">
+HTML, CSS										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-front-end/reactjs">
+React										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-front-end/angular">
+Angular										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-front-end/javascript">
+JavaScript										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-front-end/jquery">
+jQuery										</a></div></div><div class="footer_categorias_categoria">
+<a href="https://www.alura.com.br/cursos-online-data-science">Cursos de Data Science</a><div class="footer_categorias_subcategorias">
+<a href="https://www.alura.com.br/cursos-online-data-science/data-science">
+Ciência de dados										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-data-science/business-intelligence">
+BI										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-data-science/sql">
+SQL e Banco de Dados										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-data-science/excel">
+Excel										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-data-science/machine-learning">
+Machine Learning										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-data-science/nosql">
+NoSQL										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-data-science/estatistica">
+Estatística										</a></div></div><div class="footer_categorias_categoria">
+<a href="https://www.alura.com.br/cursos-online-devops">Cursos de DevOps</a><div class="footer_categorias_subcategorias">
+<a href="https://www.alura.com.br/cursos-online-devops/aws">
+AWS										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-devops/azure">
+Azure										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-devops/containers">
+Docker										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-devops/seguranca">
+Segurança										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-devops/infraestrutura-como-codigo">
+IaC										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-devops/linux-comandos-e-processos">
+Linux										</a></div></div><div class="footer_categorias_categoria">
+<a href="https://www.alura.com.br/cursos-online-design-ux">Cursos de UX &amp; Design</a><div class="footer_categorias_subcategorias">
+<a href="https://www.alura.com.br/cursos-online-design-ux/wwww">
+Photoshop e Illustrator										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-design-ux/ux">
+Usabilidade e UX										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-design-ux/video">
+Vídeo e Motion										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-design-ux/3d">
+3D										</a></div></div><div class="footer_categorias_categoria">
+<a href="https://www.alura.com.br/cursos-online-mobile">Cursos de Mobile</a><div class="footer_categorias_subcategorias">
+<a href="https://www.alura.com.br/cursos-online-mobile/react-native">
+React Native										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-mobile/flutter">
+Flutter										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-mobile/ios">
+iOS e Swift										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-mobile/android">
+Android, Kotlin										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-mobile/jogos">
+Jogos										</a></div></div><div class="footer_categorias_categoria">
+<a href="https://www.alura.com.br/cursos-online-inovacao-gestao">Cursos de Inovação &amp; Gestão</a><div class="footer_categorias_subcategorias">
+<a href="https://www.alura.com.br/cursos-online-inovacao-gestao/agilidade">
+Métodos Ágeis										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-inovacao-gestao/softskills-carreira">
+Softskills										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-inovacao-gestao/gestao-corporativa">
+Liderança e Gestão										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-inovacao-gestao/startup-empreendedorismo">
+Startups										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-inovacao-gestao/vendas">
+Vendas										</a></div></div></div></div></div></section><style>@media not all and (min-width: 1000px){
+		.grupoCaelum{
+			display: none;
+		}
+	}
+
+	.grupoCaelum{
+		background: #fff;
+		height: 400px;
+		border-top: 1px solid #EBEBEE;
+	}
+
+	.grupoCaelum .container{
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+		padding-top: 0;
+		padding-bottom: 0;
+		height: 100%;
+	}
+
+		.grupoCaelum-list{
+			display: flex;
+			list-style: none;
+			width: 60%;
+			justify-content: space-between;
+			align-items: flex-start;
+			margin-top: 20px;
+		}
+
+		.grupoCaelum-title{
+			width: 20%;
+		}
+
+		.grupoCaelum-column {
+			display: inline-block;
+			padding-left: 19px;
+			width: 240px;
+			height: 350px;
+			min-width: 160px;
+		}
+			.grupoCaelum-column-title {
+				font-size: 10px;
+				color: #d7e0e5;
+				text-transform: uppercase;
+				font-weight: 600;
+				margin-bottom: 19px;
+			}
+
+			.grupoCaelum-column-list {
+				list-style: none;
+			}
+
+			.column-item-title {
+				font-size: 11px;
+				text-align: center;
+				vertical-align: middle;
+				display: inline-block;
+				margin-left: 6.5px;
+			}
+
+		.grupoCaelum-column:not(:first-child) {
+			border-left: solid 1px #e3e9ed;
+		}
+
+		.grupoCaelum-title {
+			display: inline-block;
+			text-decoration: none;
+			color: #657176;
+			letter-spacing: normal;
+			font-size: 18px;
+			margin-top: 54px;
+		}
+
+	.column-item-logo {
+		width: 30px;
+		height: 30px;
+		vertical-align: middle;
+		display: inline-block;
+	}
+
+	.column-item {
+		margin-bottom: 17px;
+	}
+
+	.column-item a{
+		text-decoration: none;
+		color: #657176;
+	}</style><footer class="caelum-footer"><div class="grupoCaelum"><div class="container"><p class="grupoCaelum-title">Grupo Alura</p><ul class="grupoCaelum-list"><li class="grupoCaelum-column"><p class="grupoCaelum-column-title">Educação</p><ul class="grupoCaelum-column-list"><li class="column-item">
+<a target="_blank" href="https://www.caelum.com.br/">
+<svg class="column-item-logo">
+<use xlink:href="/svg,1636535197/caelumFooter#icon-caelumFooter-novo-logo-caelum">
+</use></svg><span class="column-item-title">Caelum</span>
+
+</a></li><li class="column-item">
+<a target="_blank" href="https://www.casadocodigo.com.br/">
+<svg class="column-item-logo"><use xlink:href="/svg,1636535197/caelumFooter#icon-caelumFooter-cdc"></use></svg><span class="column-item-title">Casa do Código</span>
+</a></li></ul></li><li class="grupoCaelum-column"><p class="grupoCaelum-column-title">Educação Online</p><ul class="grupoCaelum-column-list"><li class="column-item">
+<a target="_blank" href="https://www.alura.com.br/">
+<svg class="column-item-logo"><use xlink:href="/svg,1636535197/caelumFooter#icon-caelumFooter-alura"></use></svg><span class="column-item-title">Alura</span>
+</a></li><li class="column-item">
+<a target="_blank" href="https://www.alura.com.br/empresas">
+<svg class="column-item-logo" style="fill: white;"><use xlink:href="/svg,1636535197/caelumFooter#icon-caelumFooter-alura"></use></svg><span class="column-item-title">Alura Para Empresas</span>
+</a></li><li class="column-item">
+<a target="_blank" href="https://www.aluracursos.com/">
+<svg class="column-item-logo"><use xlink:href="/svg,1636535197/caelumFooter#icon-caelumFooter-alura"></use></svg><span class="column-item-title">Alura LATAM</span>
+</a></li><li class="column-item">
+<a target="_blank" href="https://www.alurastart.com.br/">
+<svg class="column-item-logo"><use xlink:href="/svg,1636535197/caelumFooter#icon-caelumFooter-alurastart"></use></svg><span class="column-item-title">Alura Start</span>
+</a></li><li class="column-item">
+<a target="_blank" href="https://www.musicdot.com.br/">
+<svg class="column-item-logo"><use xlink:href="/svg,1636535197/caelumFooter#icon-caelumFooter-musicdot"></use></svg><span class="column-item-title">MusicDot</span>
+</a></li><li class="column-item">
+<a target="_blank" href="https://www.aluralingua.com.br/">
+<svg class="column-item-logo"><use xlink:href="/svg,1636535197/caelumFooter#icon-caelumFooter-aluralingua"></use></svg><span class="column-item-title">Alura Língua</span>
+</a></li><li class="column-item">
+<a target="_blank" style="fill: #657176" href="https://www.cursospm3.com.br/">
+<svg class="column-item-logo"><use xlink:href="/svg,1636535197/caelumFooter#icon-caelumFooter-pm3"></use></svg><span class="column-item-title">PM3 - Cursos de Produto</span>
+</a></li></ul></li><li class="grupoCaelum-column"><p class="grupoCaelum-column-title">Comunidade</p><ul class="grupoCaelum-column-list"><li class="column-item">
+<a target="_blank" href="https://hipsters.tech/">
+<svg class="column-item-logo"><use xlink:href="/svg,1636535197/caelumFooter#icon-caelumFooter-hipsterstech"></use></svg><span class="column-item-title">Hipsters ponto Tech</span>
+</a></li><li class="column-item">
+<a target="_blank" href="https://scuba.dev.br/">
+<svg class="column-item-logo" style="fill: #657176"><use xlink:href="/svg,1636535197/caelumFooter#icon-caelumFooter-scubadev"></use></svg><span class="column-item-title">Scuba Dev</span>
+</a></li><li class="column-item">
+<a target="_blank" href="https://layerspontotech.com.br/">
+<svg class="column-item-logo"><use xlink:href="/svg,1636535197/caelumFooter#icon-caelumFooter-layerstech"></use></svg><span class="column-item-title">Layers ponto Tech</span>
+</a></li><li class="column-item">
+<a target="_blank" href="https://likeaboss.com.br/">
+<svg class="column-item-logo" style="fill: #657176"><use xlink:href="/svg,1636535197/caelumFooter#icon-caelumFooter-likeaboss"></use></svg><span class="column-item-title">Like a Boss</span>
+</a></li><li class="column-item">
+<a target="_blank" href="https://www.carreirasemfronteiras.com.br/">
+<svg class="column-item-logo" style="fill: #657176"><use xlink:href="/svg,1636535197/caelumFooter#icon-caelumFooter-carreira-sem-fronteiras"></use></svg><span class="column-item-title">Carreira sem Fronteiras</span>
+</a></li><li class="column-item">
+<a target="_blank" href="https://hipsters.jobs/">
+<svg class="column-item-logo"><use xlink:href="/svg,1636535197/caelumFooter#icon-caelumFooter-hipstersjobs"></use></svg><span class="column-item-title">Hipsters ponto Jobs</span>
+</a></li><li class="column-item">
+<a target="_blank" href="https://www.guj.com.br/">
+<svg class="column-item-logo"><use xlink:href="/svg,1636535197/caelumFooter#icon-caelumFooter-guj"></use></svg><span class="column-item-title">GUJ</span>
+</a></li></ul></li></ul></div></div></footer> <script>(function(){
+    var match = location.pathname.match(/\/(bf-|black-?friday\/)([^\/]+)/);
+    if (match != null) {
+        var links = document.querySelectorAll('a[href]');
+        for (var i = 0; i < links.length; i++) {
+            var href = links[i].getAttribute('href');
+            if (href[0] === '/') {
+                links[i].setAttribute('href', '/bf-' + match[2] + href);
+            }
+        }
+    }
+})();</script> <script src="./Preenchendo formulário HTML automaticamente com AJAX _ Alura Cursos Online_files/jquery.min.js.download"></script><script type="text/javascript" id="">elements=document.querySelectorAll("input, select");elements.forEach(function(b,c){b.addEventListener("change",function(a){a=this.getAttribute("name");dataLayer.push({event:"gaEvent",eventCategory:"Formul\u00e1rios",eventAction:"Altera\u00e7\u00e3o",eventLabel:a})})});</script>
+<script type="text/javascript" id="">var key="Think_Again45984$%";function log(a){console.log(a)}function getPars(){var a={};window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi,function(b,c,d){a[c]=d});return a}function userId(a){a=sha256.hmac(key,a);dataLayer.push({event:"userId",userId:a})}var script=document.createElement("script");script.onload=function(){var a=getPars().e;a&&userId(a);a=document.querySelectorAll('[type\x3d"email"]');for(var b=0;b<a.length;b++)a[b].onchange=function(){userId(this.value)}};script.src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js";
+document.head.appendChild(script);</script> <script src="./Preenchendo formulário HTML automaticamente com AJAX _ Alura Cursos Online_files/svg4everybody.min.1636535198.js.download" async=""></script> <script src="./Preenchendo formulário HTML automaticamente com AJAX _ Alura Cursos Online_files/menu.1636535198.js.download" async=""></script> <script src="./Preenchendo formulário HTML automaticamente com AJAX _ Alura Cursos Online_files/busca.1636535198.js.download" async=""></script> <script src="./Preenchendo formulário HTML automaticamente com AJAX _ Alura Cursos Online_files/cursos.1636535198.js.download" async=""></script> <script src="./Preenchendo formulário HTML automaticamente com AJAX _ Alura Cursos Online_files/detect.1636535198.js.download" async=""></script> <script src="./Preenchendo formulário HTML automaticamente com AJAX _ Alura Cursos Online_files/video.1636535198.js.download" async=""></script> <script src="./Preenchendo formulário HTML automaticamente com AJAX _ Alura Cursos Online_files/Countdown.1636535198.js.download" async=""></script> <script>var userId = (document.cookie.match('alura.userId=([^;]+)')||[null,null])[1];
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+
+  	ga('create', 'UA-42101548-1', 'alura.com.br', 'tracker0', {'siteSpeedSampleRate': 50});
+
+	if (userId) ga('tracker0.set', 'userId', userId);
+
+	ga('tracker0.require', 'displayfeatures');
+	ga('tracker0.send', 'pageview');
+  	ga('create', 'UA-42101548-9', 'alura.com.br', 'tracker1', {'siteSpeedSampleRate': 50});
+
+	if (userId) ga('tracker1.set', 'userId', userId);
+
+	ga('tracker1.require', 'displayfeatures');
+	ga('tracker1.send', 'pageview');</script> <script async="" src="./Preenchendo formulário HTML automaticamente com AJAX _ Alura Cursos Online_files/analytics.js.download"></script> <script src="./Preenchendo formulário HTML automaticamente com AJAX _ Alura Cursos Online_files/footer.1636535198.js.download" async=""></script> <script src="./Preenchendo formulário HTML automaticamente com AJAX _ Alura Cursos Online_files/highlight.min.js.download"></script> <script>hljs.initHighlightingOnLoad();</script> <script>(function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:1029027,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');</script> <script type="text/javascript">_linkedin_partner_id = "465017";
+			window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+			window._linkedin_data_partner_ids.push(_linkedin_partner_id);</script> <script type="text/javascript">(function(){var s = document.getElementsByTagName("script")[0];
+			var b = document.createElement("script");
+			b.type = "text/javascript";b.async = true;
+			b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+			s.parentNode.insertBefore(b, s);})();</script> <noscript>
+<img
+height="1" width="1" style="display:none;" alt=""
+src="https://dc.ads.linkedin.com/collect/?pid=465017&fmt=gif" />
+</noscript><iframe name="_hjRemoteVarsFrame" title="_hjRemoteVarsFrame" id="_hjRemoteVarsFrame" src="./Preenchendo formulário HTML automaticamente com AJAX _ Alura Cursos Online_files/box-ad575b5823df97fc9725e14a57070642.html" style="display: none !important; width: 1px !important; height: 1px !important; opacity: 0 !important; pointer-events: none !important;"></iframe></body><div id="fd214119-2844-43e3-a96e-d7f2dd32fd99" style="all: initial;"></div><div id="055cc3fa-8151-49f1-8edd-dff25d7e0b9a" style="all: initial;"></div><div id="2e2fe14a-ebf3-4dc7-9e54-de9c04da6148" style="all: initial;"></div><div id="0c7a8f39-3b77-4e3b-bd67-99f6e15555fb" style="all: initial;"></div><div id="e7681f3b-c5f8-4127-ab29-8ce5d7180438" style="all: initial;"></div><div id="8a4f3ed7-2e75-4a0d-92ef-685161ec6354" style="all: initial;"></div><div id="45dbf3ac-3561-4283-881e-b84b6ead7086" style="all: initial;"></div><div id="7f8419a1-8a8e-46f0-a369-3ae1536626b9" style="all: initial;"></div><div id="f206b48d-ab3e-45fe-9db2-6f05031d759d" style="all: initial;"></div><div id="4d685945-039f-4c9f-87a1-9865be2b3558" style="all: initial;"></div><div id="64000e99-abce-4c34-bf2d-119defa9f59f" style="all: initial;"></div><div id="2e611d38-dae6-4315-a8c0-dab4360f4e4f" style="all: initial;"></div><div id="289cc0ee-5a4b-472e-8993-eef1eaf3be39" style="all: initial;"></div></html>
